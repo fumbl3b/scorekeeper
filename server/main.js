@@ -1,31 +1,43 @@
-import { Meteor } from 'meteor/meteor';
-import { LinksCollection } from '/imports/api/links';
-
-function insertLink({ title, url }) {
-  LinksCollection.insert({title, url, createdAt: new Date()});
-}
+import { Meteor } from 'meteor/meteor'
+import { Players } from './../imports/api/players'
 
 Meteor.startup(() => {
-  // If the Links collection is empty, add some data.
-  if (LinksCollection.find().count() === 0) {
-    insertLink({
-      title: 'Do the Tutorial',
-      url: 'https://www.meteor.com/tutorials/react/creating-an-app'
-    });
+  
+})
 
-    insertLink({
-      title: 'Follow the Guide',
-      url: 'http://guide.meteor.com'
-    });
+let user = {
+  name: 'Harry',
+  location: 'Philadelphia'
+}
 
-    insertLink({
-      title: 'Read the Docs',
-      url: 'https://docs.meteor.com'
-    });
+let person = {
+  ...user,
+  age: 30
+}
 
-    insertLink({
-      title: 'Discussions',
-      url: 'https://forums.meteor.com'
-    });
-  }
-});
+// console.log(person);
+
+let bike = 'Cannondale'
+
+let stuff = {
+  bike,
+  laptop: 'mac'
+}
+
+// console.log(stuff)
+
+let house = {
+  bedrooms: 2,
+  bathrooms: 1.5,
+}
+
+let yearBuilt = 1920
+
+let newHouse = {
+  ...house,
+  bedrooms: 3,
+  yearBuilt,
+  flooring: 'Carpet'
+}
+
+console.log(newHouse)
